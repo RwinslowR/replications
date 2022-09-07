@@ -86,7 +86,7 @@ intnx('month',mdy(qtr(anndats)*3,1,year(anndats)),0,'e') as yearqtr format date9
 case when abs(actual) < .25 then .25 else abs(actual) end as denominator,
 (actual - surpmean) / (calculated denominator) as ue
 
-from ibes.surpsumu
+from ibes.surpsumu #surprise summary, unadjusted
 where measure="EPS" and fiscalp="QTR" 
 /* two equivalent ways to write not missing */
 and missing(surpmean)=0 and not missing(actual) 
